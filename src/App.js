@@ -1,7 +1,8 @@
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router';
 
 import Welcome from './pages/Welcome';
 import Products from './pages/Products';
+import ProductDetails from './pages/ProductDetails';
 import MainHeader from './components/MainHeader';
 
 function App() {
@@ -9,12 +10,17 @@ function App() {
 		<div>
 			<MainHeader />
 			<main>
-				<Route path="/welcome">
-					<Welcome />
-				</Route>
-				<Route path="/products">
-					<Products />
-				</Route>
+				<Switch>
+					<Route path="/welcome">
+						<Welcome />
+					</Route>
+					<Route path="/products" exact>
+						<Products />
+					</Route>
+					<Route path="/products/:id">
+						<ProductDetails />
+					</Route>
+				</Switch>
 			</main>
 		</div>
 	);
